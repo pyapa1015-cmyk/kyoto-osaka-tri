@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>京都大阪 6日5夜｜旅行手帳</title>
+<style>
+:root{
+  --cream:#fffaf3; --pink:#f7cfd6; --rose:#eaa8b5; --brown:#6d5750;
+  --green:#cdddc9; --yellow:#f8df9e; --blue:#cfe1e8; --white:#fff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Arial","Noto Sans TC",sans-serif;color:var(--brown);
+background:linear-gradient(180deg,#fffaf3 0%,#fff7f8 55%,#f8fbf6 100%);}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;
+background-image:radial-gradient(#e7b9c1 1px,transparent 1px);background-size:22px 22px}
+.wrap{max-width:1100px;margin:auto;padding:28px 18px 50px}
+.hero{background:rgba(255,255,255,.86);border:2px solid #f2d7dc;border-radius:30px;padding:30px 28px;box-shadow:0 12px 30px #9d6b7818;position:relative;overflow:hidden}
+.hero:after{content:"✿";position:absolute;right:35px;top:18px;font-size:85px;color:#f5cbd2;transform:rotate(12deg)}
+h1{margin:0 0 8px;font-size:clamp(30px,6vw,52px);letter-spacing:2px}
+.subtitle{font-size:15px;color:#9a7f77}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.badge{padding:7px 12px;border-radius:999px;background:#fff1f3;border:1px solid #f2d7dc;font-size:13px}
+.nav{display:flex;gap:9px;overflow-x:auto;padding:18px 2px;position:sticky;top:0;z-index:5;background:#fffaf3e8;backdrop-filter:blur(10px)}
+.nav button{border:1px solid #ecd8d2;background:white;color:var(--brown);border-radius:999px;padding:10px 15px;white-space:nowrap;cursor:pointer;font-weight:bold}
+.nav button.active,.nav button:hover{background:#f2c8d0;border-color:#e8adb8}
+.day{display:none}.day.active{display:block}
+.day-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:12px 0 15px}
+.day-title{font-size:28px;font-weight:800}.day-theme{font-size:14px;background:#fff;border-radius:999px;padding:8px 12px;border:1px solid #eadbd6}
+.timeline{position:relative}
+.timeline:before{content:"";position:absolute;left:78px;top:0;bottom:0;width:2px;background:#e9cdd1}
+.item{display:grid;grid-template-columns:105px 1fr;gap:18px;margin:0 0 12px;position:relative}
+.time{font-size:13px;font-weight:800;text-align:right;padding-top:17px;color:#a17770}
+.card{background:rgba(255,255,255,.9);border:1px solid #eadbd6;border-radius:18px;padding:15px 17px;box-shadow:0 5px 15px #6d575012;position:relative}
+.card:before{content:"";position:absolute;left:-25px;top:20px;width:11px;height:11px;border-radius:50%;background:#e9aeba;border:3px solid #fffaf3}
+.main{font-size:16px;font-weight:800}.detail{font-size:13px;color:#967e77;margin-top:5px;line-height:1.6}
+.transport{display:inline-block;margin-top:7px;background:#f8ecee;border-radius:8px;padding:4px 8px;font-size:12px}
+.note{margin:18px 0;background:#fff7d9;border:1px solid #efd99a;border-radius:18px;padding:14px 16px;line-height:1.7;font-size:13px}
+.summary{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.box{background:#fff;border-radius:20px;padding:18px;border:1px solid #eadbd6}
+.box h3{margin:0 0 7px;font-size:16px}.box p{margin:0;font-size:13px;line-height:1.7}
+footer{text-align:center;margin-top:35px;font-size:12px;color:#a28c85}
+@media(max-width:650px){
+ .wrap{padding:15px 12px 35px}.hero{padding:24px 19px}.hero:after{font-size:60px;right:10px}
+ .nav{padding:14px 2px;gap:8px;-webkit-overflow-scrolling:touch;touch-action:pan-x}
+ .nav button{min-height:46px;padding:10px 17px;font-size:15px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+ .card{min-height:64px}
+ .timeline:before{left:61px}.item{grid-template-columns:78px 1fr;gap:13px}.time{font-size:11px}
+ .card{padding:13px}.card:before{left:-22px}.summary{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+  <h1>京都大阪 6日5夜</h1>
+  <div class="subtitle">♡ 旅行小手帳｜1/11 ～ 1/16　京都 → 大阪 → 關西機場 ♡</div>
+  <div class="badges">
+    <span class="badge">👭 7人旅行</span><span class="badge">👘 和服</span>
+    <span class="badge">🎢 USJ</span><span class="badge">🌸 勝尾寺</span>
+    <span class="badge">🍜 美食＋購物</span>
+  </div>
+</section>
+
+<div class="nav" id="nav" role="tablist" aria-label="行程天數"></div>
+<main id="days"></main>
+
+<section class="summary">
+  <div class="box"><h3>🧳 Day 4 行李策略</h3><p>京都退房 → 新今宮寄放 → 空手去勝尾寺 → 心齋橋／道頓堀 → 新今宮拿行李 → 飯店。</p></div>
+  <div class="box"><h3>🚃 交通提醒</h3><p>勝尾寺段轉乘較多，出發前再確認當日列車與巴士班次；其他時間保留集合與步行緩衝。</p></div>
+  <div class="box"><h3>🎀 旅行節奏</h3><p>Day 2 東山集中、Day 3 嵐山、Day 5 USJ整天，避免一天塞太多不同區域。</p></div>
+</section>
+<footer>Have a lovely trip ♡ Kyoto & Osaka</footer>
+</div>
+
+<script>
+const data=[
+{d:"Day 1｜1/11（一）",t:"抵達京都・伏見稻荷",items:[
+["12:00","✈️ 抵達關西機場","入境・領行李・交通準備"],
+["13:30～14:45","🚆 關西機場 → 京都站","JR 特急 HARUKA；約75分鐘","JR"],
+["14:45～15:15","🏨 京都站 → 飯店・放行李","京都站 → 地下鐵烏丸線 → 四條站；再步行至飯店","地下鐵"],
+["15:15～15:35","☕ 飯店休息","稍微整理、休息"],
+["15:35～16:15","🚆 飯店 → 伏見稻荷","四條 → 京都站 → JR奈良線 → 稻荷站","JR＋地下鐵"],
+["16:15～17:30","⛩️ 伏見稻荷大社","千本鳥居、拍照","步行"],
+["17:30～18:00","🚆 伏見稻荷 → 京都站","JR奈良線","JR"],
+["18:00～19:50","🛍️ 京都車站逛街","買衣服、自由活動"],
+["19:50～20:50","🍴 晚餐","京都站周邊"],
+["20:50～21:20","🏨 京都站 → 飯店","回飯店休息","地下鐵＋步行"],
+["21:20後","🌙 休息","自由活動"]
+]},
+{d:"Day 2｜1/12（二）",t:"和服・清水寺・祇園",items:[
+["08:00～10:30","💄 化妝","化妝預約"],
+["10:30～11:00","👘 前往璃光著物レンタル 清水本店","前往二年坂附近"],
+["11:00～12:15","👘 租和服・換裝・做頭髮","選和服、換裝、造型"],
+["12:15～12:25","♡ 整理・集合",""],
+["12:25～14:00","⛩️ 清水寺","和服拍照"],
+["14:00～15:30","📸 三年坂・二年坂","散步、拍照、逛小店"],
+["15:30～16:10","⛩️ 八坂庚申堂・八坂塔","周邊拍照"],
+["16:10～16:40","👘 回和服店","步行返回"],
+["16:40～17:20","🎀 歸還和服",""],
+["17:20～18:30","🍴 晚餐","東山／祇園一帶"],
+["18:30～20:00","🌸 祇園・花見小路","晚間散步"],
+["20:00～20:30","🏨 回飯店",""],
+["20:30後","☁️ 休息",""]
+]},
+{d:"Day 3｜1/13（三）",t:"金閣寺・嵐山",items:[
+["09:00～09:35","🚆 飯店 → 金閣寺","四條 → 北大路 → 市巴士至金閣寺道","地下鐵＋巴士"],
+["09:35～10:40","🏯 金閣寺","參觀、拍照"],
+["10:40～11:30","🚆 金閣寺 → 嵐山","公車／電車轉乘；以當日導航為準"],
+["11:30～13:00","🍴 嵐山午餐","嵐山站周邊"],
+["13:00～14:00","🏯 天龍寺","庭園散步"],
+["14:00～14:40","🎋 竹林小徑＋野宮神社","順路散步"],
+["14:40～15:30","🌉 渡月橋＋桂川河岸","拍照、散步"],
+["15:30～16:30","🛍️ 嵐山商店街","自由活動、伴手禮"],
+["16:30～17:15","🚆 嵐山 → 京都市區","回飯店附近","電車"],
+["17:30～20:00","🍴 晚餐／自由活動",""],
+["20:00後","🏨 回飯店",""]
+]},
+{d:"Day 4｜1/14（四）",t:"京都 → 勝尾寺 → 大阪市區",items:[
+["08:00～09:00","🧳 京都飯店退房","京都 → 新今宮"],
+["09:00～09:20","🧳 新今宮寄放行李","先把行李放下，空手出發"],
+["09:20～09:30","🚶 新今宮 → 動物園前","步行約4～6分鐘","步行"],
+["09:30～10:10","🚇 動物園前 → 箕面萱野","御堂筋線／北大阪急行直通；不需轉車","地鐵"],
+["10:10～10:35","🚌 箕面萱野 → 勝尾寺","阪急巴士特急30；班次依當日為準","巴士"],
+["10:35～13:30","🌸 勝尾寺","達摩、參觀、拍照"],
+["13:30～14:00","🚌 勝尾寺 → 箕面萱野","回程巴士","巴士"],
+["14:00～14:45","🚇 箕面萱野 → 心齋橋","北大阪急行／御堂筋線直通","地鐵"],
+["14:45～17:30","🛍️ 心齋橋","心齋橋筋商店街、購物"],
+["17:30～20:00","🐙 道頓堀＋晚餐","固力果跑跑人、逛街、吃晚餐"],
+["20:00～20:20","🚇 道頓堀 → 新今宮","回去拿行李","地鐵"],
+["20:20～20:40","🧳 拿行李 → 飯店","新今宮 → 飯店約10分鐘","步行"],
+["21:00～22:00","🗼 通天閣夜景","飯店附近，步行前往"],
+["22:00後","🏨 回飯店休息",""]
+]},
+{d:"Day 5｜1/15（五）",t:"USJ 全日",items:[
+["早上","🚆 飯店 → Universal City","新今宮 → 西九条 → 櫻島線 → Universal City","JR"],
+["全天","🎢 大阪環球影城 USJ","建議整天專心玩，不再塞其他景點"],
+["晚上","🚆 USJ → 飯店","Universal City → 西九条 → 新今宮","JR"],
+["晚上","🌙 飯店休息",""]
+]},
+{d:"Day 6｜1/16（六）",t:"大阪城・最後購物・回台灣",items:[
+["早上","🧳 退房・行李寄放","先寄放飯店"],
+["上午","🏯 大阪城公園・天守閣","大阪城參觀"],
+["中午～下午","🛍️ 心齋橋・道頓堀","午餐＋最後購物"],
+["下午","🧳 回飯店拿行李",""],
+["下午","🚶 前往難波","前往南海難波站"],
+["下午","🚆 南海電鐵 → 關西機場","Rapi:t／空港急行；依航班時間安排"],
+["—","✈️ 關西機場 → 台灣","預留報到、托運、安檢時間"]
+]}
+];
+
+const nav=document.getElementById("nav"), days=document.getElementById("days");
+data.forEach((day,i)=>{
+  const b=document.createElement("button");
+  b.type="button";
+  b.setAttribute("role","tab");
+  b.setAttribute("aria-controls","day"+i);
+  b.textContent=day.d.split("｜")[0];
+  b.addEventListener("click", function(e){ e.preventDefault(); show(i); }, {passive:false});
+  nav.appendChild(b);
+  const sec=document.createElement("section"); sec.className="day"+(i===0?" active":""); sec.id="day"+i;
+  sec.innerHTML=`<div class="day-head"><div class="day-title">${day.d}</div><div class="day-theme">${day.t}</div></div><div class="timeline">${
+    day.items.map(x=>`<div class="item"><div class="time">${x[0]}</div><div class="card"><div class="main">${x[1]}</div><div class="detail">${x[2]||""}</div>${x[3]?`<span class="transport">${x[3]}</span>`:""}</div></div>`).join("")
+  }</div>`;
+  days.appendChild(sec);
+});
+function show(i){
+  document.querySelectorAll(".day").forEach((x,j)=>{
+    x.classList.toggle("active",j===i);
+    x.setAttribute("aria-hidden", j===i ? "false" : "true");
+  });
+  document.querySelectorAll(".nav button").forEach((x,j)=>{
+    x.classList.toggle("active",j===i);
+    x.setAttribute("aria-selected", j===i ? "true" : "false");
+  });
+  window.scrollTo({top: Math.max(0, document.getElementById("day"+i).getBoundingClientRect().top + window.scrollY - 75), behavior:"auto"});
+}
+document.querySelectorAll(".day").forEach((x,j)=>x.setAttribute("aria-hidden", j===0 ? "false" : "true"));
+document.querySelectorAll(".nav button").forEach((x,j)=>{
+  x.classList.toggle("active",j===0);
+  x.setAttribute("aria-selected",j===0 ? "true" : "false");
+});
+</script>
+</body>
+</html>
